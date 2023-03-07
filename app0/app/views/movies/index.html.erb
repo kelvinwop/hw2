@@ -1,0 +1,19 @@
+<h1>Movies</h1>
+
+<%= link_to "New Movie", new_movie_path %>
+<ul>
+    <% @movies.each do |movie| %>
+        <li>
+            Title: <%= movie.title %> <br>
+            Description: <%= movie.description %> <br>
+            Rating: <%= movie.rating %> <br>
+            Release Date: <%= movie.release_date %> <br>
+            <a href='/movies/<%= movie.id %>'>Show!</a>
+            <a href='/movies/<%= movie.id %>/edit'>Edit!</a>
+            <%= link_to "Destroy", movie_path(movie), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+            } %>
+        </li>
+    <% end %>
+</ul>
